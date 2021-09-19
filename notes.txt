@@ -1,0 +1,50 @@
+/*
+  * first : WebSocekt allow for full-duplex communication , Thats mean :
+    - the client can initiate communication with the server 
+    - and the server can initiate communication with the client
+    - this is not something we had with HTTP request :  
+    with HTTP request it was the client's job to initiate the request asking for data form the server and then the server would go ahead and respond .
+    But at any point in time the server couldn't just send data to the clinet, if the clinet didn't make an HTTP requset the server had no way of communicating with it.
+    All of that changes with web sockets
+    - with a web socket we have a presistent connection which means that the clinet connects to the server and it stays connected for as long as it needs to .
+    - So if i am creating a chat app i can connect to the client which in this case would be a browser to the server and then the client could send messages to the server and the server whenever it wanted to could send messages to a client . 
+
+  * second : Web Socket portocol is a separate protocol from HTTP
+
+    - the communication remember could be bi directional , So it goes from either client to server or from server to client
+*/
+
+
+
+io.on('connection', (socket) => { // this event 'connection' is work when new client is connected with the server
+    // socket is an object and it contains information about rhat new connection , so right here we can use methods on socket to communicate with that specific client 
+    // Remember : if i have five clients connecting to the server => this function is going to run five different times one for each new connection.
+    console.log('New WebSocket connection');
+    /*socket.emit('countUpdated', count);
+    socket.on('increment', () => {
+        count++;
+        //  socket.emit('countUpdated', count); // Because it work with praticular connection
+        io.emit('countUpdated', count); // this emit every single connection that's currently available
+    */
+
+
+    
+// app.listen(port, () => {
+//     console.log(`Server is up on port ${port}!`);
+// })
+
+
+
+********************** In Client Side *************************
+/ socket.on('countUpdated', (count) => {
+//     console.log('The count has been updated !', count);
+// })
+
+// document.querySelector('#increment').addEventListener('click', () => {
+//     console.log('CLicked');
+//     socket.emit('increment');
+// })
+
+// socket.on('welcomeMessage', (message) => {
+//     console.log(message);
+// })
